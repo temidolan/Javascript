@@ -48,15 +48,13 @@ function runEnter() {
   console.log(filteredData);
   tbody.html("");
 
-  let response = {
-    filteredData
-  }
-  if (response.filteredData.length !== 0) {
-    addData(filteredData)
-  }
-  else {
-    tbody.append("tr").append("td").text("No sightings")
-  }
+  filteredData.forEach((analysis) => {
+    var row = tbody.append("tr");
+    Object.values(analysis).forEach((value) => {
+      var cell = row.append("td");
+      cell.text(value);
+    });
+});
 }
 
 

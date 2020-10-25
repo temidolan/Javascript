@@ -28,7 +28,7 @@ data.forEach(function (UFO) {
 var button = d3.select("#filter-btn");
 
 // Select the form
-var form = d3.select("form");
+var form = d3.select("panel panel-default");
 
 // Create event handlers 
 button.on("click", runEnter);
@@ -55,10 +55,10 @@ function runEnter(){
     if(inputElement3){
         var filteredData = filteredData.filter(datatable => datatable.state === inputElement3);
     }
-    if (input){
+    if (inputElement4){
         var filteredData = filteredData.filter(datatable => datatable.state === inputElement4);
     }
-    if(input){
+    if(inputElement5){
         var filteredData = filteredData.filter(datatable => datatable.state === inputElement5);
     }
     buildTable(filteredData)

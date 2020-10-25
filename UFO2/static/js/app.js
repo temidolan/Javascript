@@ -12,20 +12,56 @@ data.forEach(function (UFO) {
       cell.text(value);
     });
   });
+
+  function buildTable(data){
+    data.forEach((analysis) => {
+        var row = tbody.append("tr");
+        Object.values(analysis).forEach((value) => {
+          var cell = row.append("td");
+          cell.text(value);
+        });
+    });
+
+}
   
-//   // Select the button
-// var button = d3.select("#filter-btn");
+  // Select the button
+var button = d3.select("#filter-btn");
 
-// // Select the form
-// var form = d3.select("form");
+// Select the form
+var form = d3.select("form");
 
-// // Create event handlers 
-// button.on("click", runEnter);
-// form.on("submit", runEnter);
+// Create event handlers 
+button.on("click", runEnter);
+form.on("submit", runEnter);
 
-// function runEnter(){
-//     d3.preventDefault();
+function runEnter(){
+    d3.event.preventDefault();
 
-//     var inputElement = d3.select(#"datetime");
-//     var inputElement = d3.select()
-// }
+    var inputElement1 = d3.select("#datetime").property("value");
+    var inputElement2 = d3.select("#city").property("value");
+    var inputElement3 = d3.select("#state").property("value");
+    var inputElement4 = d3.select("#country").property("value");
+    var inputElement5 = d3.select("#shape").property("value");
+
+    var filteredData = tableData;
+    tbody.html("");
+    
+    if(inputElement1){
+        var filteredData = filteredData.filter(datatable => datatable.datetime === inputElement1);
+    }
+    if(inputElement2){
+        var filteredData = filteredData.filter(datatable => datatable.city === inputElement2);
+    }
+    if(inputElement3){
+        var filteredData = filteredData.filter(datatable => datatable.state === inputElement3);
+    }
+    if (input){
+        var filteredData = filteredData.filter(datatable => datatable.state === inputElement4);
+    }
+    if(input){
+        var filteredData = filteredData.filter(datatable => datatable.state === inputElement5);
+    }
+    buildTable(filteredData)
+}
+
+
